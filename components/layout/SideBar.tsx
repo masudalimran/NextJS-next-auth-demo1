@@ -3,10 +3,14 @@ import SideBarItem from "./SideBarItem";
 import SideBarLogo from "./SideBarLogo";
 import { BiLogOut } from "react-icons/bi";
 import SideBarTweetBtn from "./SideBarTweetBtn";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 type Props = {};
 
 const SideBar = (props: Props) => {
+  const { data: currentUser } = useCurrentUser();
+  // console.log("from SideBar.tsx", currentUser);
+
   return (
     <div className="cold-span-1 h-full pr-4 md:pr-6">
       <div className="flex flex-col items-end">
@@ -20,7 +24,9 @@ const SideBar = (props: Props) => {
               icon={item.icon}
             />
           ))}
-          <SideBarItem label="Logout" icon={BiLogOut} onClick={() => {}} />
+          {currentUser && (
+            <SideBarItem label="Logout" icon={BiLogOut} onClick={() => {}} />
+          )}
           <SideBarTweetBtn />
         </div>
       </div>

@@ -5,15 +5,21 @@ import RegisterModal from "@/components/modals/RegisterModal";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
+import { Toaster } from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Layout>
-        <LoginModal />
+      <SessionProvider session={pageProps.session}>
+        <Toaster />
         <RegisterModal />
-        {/* <Modal isOpen title="Text Modal" actionLabel="Submit" /> */}
-        <Component {...pageProps} />
-      </Layout>
+        <LoginModal />
+        <Layout>
+          {/* <Modal isOpen title="Text Modal" actionLabel="Submit" /> */}
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
     </>
   );
 }
