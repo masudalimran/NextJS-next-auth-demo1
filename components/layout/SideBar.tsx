@@ -23,6 +23,7 @@ const SideBar = (props: Props) => {
               href={item.href}
               label={item.label}
               icon={item.icon}
+              auth={item.auth}
             />
           ))}
           {currentUser && (
