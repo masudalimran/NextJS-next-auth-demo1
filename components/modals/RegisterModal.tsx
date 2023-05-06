@@ -89,6 +89,7 @@ const RegisterModal = (props: Props) => {
       />
       <Input
         placeholder="Password"
+        type="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}
@@ -112,7 +113,8 @@ const RegisterModal = (props: Props) => {
 
   return (
     <Modal
-      disabled={isLoading || isInvalid}
+      disabled={isLoading}
+      invalid={isInvalid}
       isOpen={registerModal.isOpen}
       title="Create an account"
       actionLabel="Register"

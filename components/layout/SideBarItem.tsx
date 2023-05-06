@@ -1,4 +1,5 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useCallback } from "react";
 import { IconType } from "react-icons";
 
 type SideBarItemProp = {
@@ -8,9 +9,18 @@ type SideBarItemProp = {
   onClick?: () => void;
 };
 
-const SideBarItem = ({ href, label, icon: Icon }: SideBarItemProp) => {
+const SideBarItem = ({ href, label, icon: Icon, onClick }: SideBarItemProp) => {
+  const router = useRouter();
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      return onClick();
+    }
+    if (href) {
+      router.push(href);
+    }
+  }, [href, onClick, router]);
   return (
-    <div className="flex flex-row items-center">
+    <div onClick={handleClick} className="flex flex-row items-center">
       <div
         className="
         relative

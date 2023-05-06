@@ -11,6 +11,7 @@ type Props = {
   footer?: ReactElement;
   actionLabel: string;
   disabled?: boolean;
+  invalid?: boolean;
 };
 
 const Modal = ({
@@ -22,6 +23,7 @@ const Modal = ({
   footer,
   actionLabel,
   disabled,
+  invalid,
 }: Props) => {
   const handleClose = useCallback(() => {
     if (disabled) {
@@ -76,7 +78,7 @@ const Modal = ({
             {/* Footer */}
             <div className="flex flex-col gap-2 p-10">
               <Button
-                disabled={disabled}
+                disabled={disabled || invalid}
                 label={actionLabel}
                 secondary
                 fullWidth
