@@ -32,7 +32,7 @@ const LoginModal = (props: Props) => {
       await signIn("credentials", { email, password });
       loginModal.onClose();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
