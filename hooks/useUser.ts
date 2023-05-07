@@ -6,7 +6,8 @@ const useUser = (userId: string) => {
     userId ? `/api/users/${userId}` : null,
     fetcher
   );
-  // console.log("from useCurrentUser Hook", data);
+  // console.log("from userUser hook", userId);
+  // console.log("from useUser Hook", data);
   return {
     data,
     error,
