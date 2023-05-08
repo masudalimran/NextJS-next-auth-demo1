@@ -15,7 +15,7 @@ export const sideBarItems = [
   },
   {
     label: "Profile",
-    href: "/users/123",
+    href: "{profile_url}",
     icon: FaUser,
     auth: true,
   },

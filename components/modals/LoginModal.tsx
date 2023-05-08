@@ -25,18 +25,20 @@ const LoginModal = (props: Props) => {
   }, [isLoading, loginModal, registerModal]);
 
   const onSubmit = useCallback(async () => {
-    try {
-      setIsLoading(true);
+    if (!isInvalid) {
+      try {
+        setIsLoading(true);
 
-      // Todo Login
-      await signIn("credentials", { email, password });
-      loginModal.onClose();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
+        // Todo Login
+        await signIn("credentials", { email, password });
+        loginModal.onClose();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }, [email, loginModal, password]);
+  }, [email, isInvalid, loginModal, password]);
 
   useEffect(() => {
     let errorCount = 0;
@@ -47,7 +49,10 @@ const LoginModal = (props: Props) => {
   }, [email, password]);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4 ">
+    <div
+      className="flex flex-col gap-4 "
+      onKeyPress={(e) => e.key === "Enter" && onSubmit()}
+    >
       <Input
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}

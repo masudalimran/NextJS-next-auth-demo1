@@ -29,33 +29,35 @@ const RegisterModal = (props: Props) => {
   }, [isLoading, loginModal, registerModal]);
 
   const onSubmit = useCallback(async () => {
-    try {
-      setIsLoading(true);
+    if (!isInvalid) {
+      try {
+        setIsLoading(true);
 
-      // Todo Register & login
-      const data = {
-        name,
-        username,
-        email,
-        password,
-      };
-      await axios.post("/api/register", data);
+        // Todo Register & login
+        const data = {
+          name,
+          username,
+          email,
+          password,
+        };
+        await axios.post("/api/register", data);
 
-      toast.success("Account created.");
+        toast.success("Account created.");
 
-      signIn("credentials", {
-        email,
-        password,
-      });
+        signIn("credentials", {
+          email,
+          password,
+        });
 
-      registerModal.onClose();
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong!");
-    } finally {
-      setIsLoading(false);
+        registerModal.onClose();
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong!");
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }, [email, name, password, registerModal, username]);
+  }, [email, isInvalid, name, password, registerModal, username]);
 
   useEffect(() => {
     let errorCount = 0;
@@ -68,7 +70,10 @@ const RegisterModal = (props: Props) => {
   }, [email, name, password, username]);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4 ">
+    <div
+      className="flex flex-col gap-4 "
+      onKeyPress={(e) => e.key === "Enter" && onSubmit()}
+    >
       <Input
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}

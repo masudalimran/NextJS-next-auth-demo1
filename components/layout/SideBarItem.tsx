@@ -29,7 +29,9 @@ const SideBarItem = ({
     if (auth && !currentUser) {
       loginModal.onOpen();
     } else if (href) {
-      router.push(href);
+      let updatedHref = "";
+      updatedHref = href.replace("{profile_url}", `/users/${currentUser.id}`);
+      router.push(updatedHref);
     }
   }, [auth, currentUser, href, loginModal, onClick, router]);
   return (
