@@ -13,6 +13,8 @@ const Avatar = ({ userId, isLarge, hasBorder }: Props) => {
   const router = useRouter();
   const { data: fetchedUser } = useUser(userId);
 
+  // console.log(fetchedUser);
+
   const onClick = useCallback(
     (event: any) => {
       event.stopPropagation();

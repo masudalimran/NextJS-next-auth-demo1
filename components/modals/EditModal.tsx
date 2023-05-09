@@ -9,6 +9,7 @@ import axios from "axios";
 
 import Modal from "../Modal";
 import Input from "../Input";
+import ImageUpload from "../ImageUpload";
 
 type Props = {};
 
@@ -16,6 +17,8 @@ const EditModal = (props: Props) => {
   const { data: currentUser } = useCurrentUser();
   const { mutate: mutateFetchedUser } = useUser(currentUser?.id);
   const editModal = useEditModal();
+
+  // console.log("From EditMdoal.tsx", currentUser);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -77,6 +80,18 @@ const EditModal = (props: Props) => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
+      <ImageUpload
+        value={profileImage}
+        disabled={isLoading}
+        onChange={(image) => setProfileImage(image)}
+        label="Upload Profile Image"
+      />
+      <ImageUpload
+        value={coverImage}
+        disabled={isLoading}
+        onChange={(image) => setCoverImage(image)}
+        label="Upload Cover Image"
+      />
       <Input
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}

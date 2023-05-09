@@ -39,6 +39,7 @@ const UserBio = ({ userId }: Props) => {
             {capitalizeFirstLetter(fetchedUser?.name)}
           </p>
           <p className="text-md text-neutral-500">@{fetchedUser?.username}</p>
+          <p className="text-md text-neutral-500">{fetchedUser?.email}</p>
         </div>
         <div className="flex flex-col mt-4">
           <p className="text-white">{fetchedUser?.bio}</p>
