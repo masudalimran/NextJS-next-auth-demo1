@@ -14,7 +14,7 @@ type Props = {
 };
 
 const PostItem = ({ userId, data }: Props) => {
-  console.log(userId);
+  // console.log(userId);
   const router = useRouter();
   const loginModal = useLoginModal();
 
