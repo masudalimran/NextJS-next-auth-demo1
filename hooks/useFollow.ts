@@ -27,8 +27,8 @@ const useFollow = (userId: string) => {
         request = () => axios.post("/api/follow", { userId });
       }
       await request();
-      await mutateCurrentUser();
-      await mutateFetchedUser();
+      mutateCurrentUser();
+      mutateFetchedUser();
 
       if (isFollowing) toast.error("Not Following");
       else toast.success("Following Now");
