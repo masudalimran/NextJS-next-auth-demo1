@@ -13,6 +13,7 @@ export default async function handler(
     // const { userId } = req.body;
     const userId = req.method === "POST" ? req.body.userId : req.query.userId;
     const { currentUser } = await serverAuth(req, res);
+
     if (!userId || typeof userId !== "string") {
       throw new Error("Invalid User Id!");
     }
@@ -27,11 +28,11 @@ export default async function handler(
     }
 
     let updatedFollowingIds = [...user.followingIds];
-    console.log(user.followingIds);
+    // console.log(user.followingIds);
 
     if (req.method === "POST") {
       updatedFollowingIds.push(userId);
-      console.log("code ran from follow.ts");
+      // console.log("code ran from follow.ts");
     }
 
     if (req.method === "DELETE") {
