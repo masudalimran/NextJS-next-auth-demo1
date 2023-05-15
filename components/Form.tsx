@@ -27,8 +27,12 @@ const Form = ({ placeholder, isComment, postId }: Props) => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      await axios.post("/api/posts", { body });
-      toast.success("Tweeted Successfully!");
+      const url = isComment ? `/api/comment?postId=${postId}` : "/api/posts";
+
+      await axios.post(url, { body });
+      toast.success(
+        isComment ? "Commented Successfully!" : "Tweeted Successfully!"
+      );
       setBody("");
       mutatePosts();
     } catch (error) {
@@ -37,7 +41,7 @@ const Form = ({ placeholder, isComment, postId }: Props) => {
     } finally {
       setIsLoading(false);
     }
-  }, [body, mutatePosts]);
+  }, [body, isComment, mutatePosts, postId]);
 
   if (isLoading) {
     return (
