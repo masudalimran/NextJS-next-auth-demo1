@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Requirement
+---
+- Node.js
+- <a href="https://www.youtube.com/watch?v=yrtANCYlm14&ab_channel=GotStucked%3F"> pnpm/ yarn (optional)</a>
+- <a href="https://www.youtube.com/watch?time_continue=1&v=q3ix08OdGHE&embeds_referring_euri=https%3A%2F%2Fwww.bing.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.bing.com&source_ve_path=Mjg2NjY&feature=emb_logo&ab_channel=DevelopersDiary">Mongo atlas account</a>
+- VScode
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## How to Install This Project
+--- 
+- clone this repository
+- go inside next-auth-demo-2 folder
+- run pnpm install/ npm install/ yarn install in terminal
+- create a database in mongo atlas 
+- get connection string of mongoDB cluster
+- create a file inside next-auth-demo-2 folder named .env
+- copy the following format & modify the strings
+```
+DATABASE_URL=<mongodb atlas connection string VScode variant>
+NEXTAUTH_JWT_SECRET=<random string of atleast 8 characters>
+NEXTAUTH_SECRET=<random string of atleast 8 characters>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  - run pnpm run dev/ npm run dev/ yarn run dev in terminal to start the app
+  - go to http://localhost:3000 
+  - You should be able to connect
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### If you are facing any issue contact me through LinkedIn/ Facebook
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Facebook: https://www.facebook.com/masudalimran93
+- LinkedIn: https://www.linkedin.com/in/masud-al-imran/
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+--- 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Running App Link: https://next-js-next-auth-demo1.vercel.app/
 
-## Learn More
+> if you are not able to login/ register in running app. It means I have removed the database as it was built for my testing. Don't Worry if you have followed the steps you can make yours work just fine
 
-To learn more about Next.js, take a look at the following resources:
+YouTube Video Demonstration: https://www.youtube.com/watch?v=7En4e7jjyXs&ab_channel=Masudalimran-web-dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> # My Portfolio Site Link: 
+> https://masud-al-imran.netlify.app/
