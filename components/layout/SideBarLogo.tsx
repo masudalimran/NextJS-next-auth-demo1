@@ -21,7 +21,7 @@ const SideBarLogo = (props: Props) => {
             cursor-pointer 
             transition"
     >
-      <BsTwitter size={20} color="white" />
+      <BsTwitter size={40} className="text-sky-500" />
     </div>
   );
 };

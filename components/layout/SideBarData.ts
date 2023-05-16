@@ -12,6 +12,7 @@ export const sideBarItems = [
     href: "/notifications",
     icon: BsBellFill,
     auth: true,
+    alert: true,
   },
   {
     label: "Profile",

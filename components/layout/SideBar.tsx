@@ -16,7 +16,10 @@ const SideBar = (props: Props) => {
     <div className="cold-span-1 h-full pr-4 md:pr-6">
       <div className="flex flex-col items-end">
         <div className="space-y-2 lg:w-[230px]">
-          <SideBarLogo />
+          <div className="flex flex-row items-center">
+            <SideBarLogo />
+            <p className="hidden lg:block text-sky-500 text-xl">Sweater</p>
+          </div>
           {sideBarItems.map((item, index) => (
             <SideBarItem
               key={index}
@@ -24,6 +27,7 @@ const SideBar = (props: Props) => {
               label={item.label}
               icon={item.icon}
               auth={item.auth}
+              alert={item.alert && currentUser?.hasNotification}
             />
           ))}
           {currentUser && (
