@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import Button from "./Button";
 import Avatar from "./Avatar";
+import usePost from "@/hooks/usePost";
 
 type Props = {
   placeholder: string;
@@ -20,6 +21,7 @@ const Form = ({ placeholder, isComment, postId }: Props) => {
   const loginModal = useLoginModal();
   const { data: currentUser } = useCurrentUser();
   const { mutate: mutatePosts } = usePosts();
+  const { mutate: mutatePost } = usePost(postId as string);
 
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,13 +37,14 @@ const Form = ({ placeholder, isComment, postId }: Props) => {
       );
       setBody("");
       mutatePosts();
+      mutatePost();
     } catch (error) {
       console.error(error);
       toast.error("Something Went Wrong!");
     } finally {
       setIsLoading(false);
     }
-  }, [body, isComment, mutatePosts, postId]);
+  }, [body, isComment, mutatePost, mutatePosts, postId]);
 
   if (isLoading) {
     return (

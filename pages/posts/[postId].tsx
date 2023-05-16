@@ -1,14 +1,13 @@
 import Form from "@/components/Form";
 import Header from "@/components/Header";
+import CommentFeed from "@/components/posts/CommentFeed";
 import PostItem from "@/components/posts/PostItem";
 import usePost from "@/hooks/usePost";
 import { useRouter } from "next/router";
 import React from "react";
 import { ClipLoader } from "react-spinners";
 
-type Props = {};
-
-const PostView = (props: Props) => {
+const PostView = () => {
   const router = useRouter();
   const { postId } = router.query;
   const { data: fetchedPost, isLoading } = usePost(postId as string);
@@ -20,6 +19,8 @@ const PostView = (props: Props) => {
     );
   }
 
+  console.log(fetchedPost?.comments);
+
   return (
     <>
       <Header label="Tweet" showBackArrow />
@@ -29,6 +30,7 @@ const PostView = (props: Props) => {
         isComment
         placeholder="Tweet your reply"
       />
+      <CommentFeed comments={fetchedPost?.comments} />
     </>
   );
 };

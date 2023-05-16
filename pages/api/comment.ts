@@ -11,13 +11,14 @@ export default async function handler(
 
   try {
     const { currentUser } = await serverAuth(req, res);
+    // console.log("comment js code ran", currentUser);
     const { body } = req.body;
     const { postId } = req.query;
     if (!postId || typeof postId !== "string") {
       throw new Error("Invalid post id");
     }
 
-    const comment = prisma.comment.create({
+    const comment = await prisma.comment.create({
       data: {
         body,
         userId: currentUser.id,
